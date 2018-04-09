@@ -18,10 +18,10 @@
 <div class="div2" id="id01">
 	<img id="close" src="cross.png" style="width: 20px; height: 20px; float: right;" onclick="closeDiv()"></img>
 	<label for="username"><b>Username</b></label>
-	<input type="text" name="username" placeholder="Username">
+	<input id= "userId" type="text" name="username" placeholder="Username">
 	<label for="password"><b>Password</b></label>
-	<input type="password" name="password" placeholder="Password">
-	<button id="confirmLogin" class="button2">Login</button>
+	<input id= "userPass" type="password" name="password" placeholder="Password">
+	<button id="confirmLogin" class="button2" onclick="getLoginInfo()">Login</button>
 </div>
 
 <script src="login.js"></script>
