@@ -3,6 +3,23 @@ var http = require('http').Server(app);
 var fs = require('fs');
 var path = require('path');
 
+app.get('/game.html*', function(req, res) {
+  var login = getParameterByName('ailin', req.url);
+  if(login == 'true') {
+    fs.readFile(__dirname + '/game.html', function (err, data) {
+        if (err) console.log(err);
+        res.set('Content-Type', 'text/html');
+        res.send(data);
+      });
+  }
+  else {
+    fs.readFile(__dirname + '/login.html', function (err, data) {
+        if (err) console.log(err);
+        res.set('Content-Type', 'text/html');
+        res.send(data);
+      });
+  }
+});
 
 app.get('/*.html', function(req, res) {
   fs.readFile(__dirname + req.url, function (err, data) {
@@ -10,6 +27,14 @@ app.get('/*.html', function(req, res) {
         res.set('Content-Type', 'text/html');
         res.send(data);
       });
+});
+
+app.get('/', function(req, res) {
+  fs.readFile(__dirname + 'login.html', function (err, data) {
+    if (err) console.log(err);
+    res.set('Content-Type', 'text/html');
+    res.send(data);
+    });
 });
 
 app.get('/*.css', function(req, res) {
@@ -44,7 +69,17 @@ app.get('/*.js', function(req, res) {
       });
 });
 
-http.listen(2233, function() {
+http.listen(2233, '0.0.0.0', function() {
   console.log('Listening on port: 2233');
 });
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
 
