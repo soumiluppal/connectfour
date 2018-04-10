@@ -52,11 +52,12 @@ class Connect4 {
 
 		$board.on('click', '.col.empty', function() {
 			const col = $(this).data('col');
-			const row = $(this).data('row');
 			const $lastEmptyCell = findLastEmptyCell(col);
+			$lastEmptyCell.removeClass(`empty next-${that.player}`);
 			$lastEmptyCell.removeClass('empty');
 			$lastEmptyCell.addClass(that.player);
 			that.player = (that.player === 'red') ? 'yellow' : 'red';
+			$(this).trigger('mouseenter')
 		});
 	}
 

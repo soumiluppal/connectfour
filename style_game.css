@@ -24,6 +24,10 @@ h1 {
 	margin: 5px;
 }
 
+.col.empty {
+	cursor: pointer;
+}
+
 .next-red {
 	background-color: rgb(255, 100, 100);
 }
