@@ -1,41 +1,42 @@
 var app = require('express')();
 var http = require('http').Server(app);
 var fs = require('fs');
+var path = require('path');
 
-app.get('/login.html', function(req, res) {
-  fs.readFile(__dirname + '/login.html', function (err, data) {
+app.get('/*.html', function(req, res) {
+  fs.readFile(__dirname + req.url, function (err, data) {
         if (err) console.log(err);
         res.set('Content-Type', 'text/html');
         res.send(data);
       });
 });
 
-app.get('/login_style.css', function(req, res) {
-  fs.readFile(__dirname + '/login_style.css', function (err, data) {
+app.get('/*.css', function(req, res) {
+  fs.readFile(__dirname + req.url, function (err, data) {
         if (err) console.log(err);
         res.set('Content-Type', 'text/css');
         res.send(data);
       });
 });
 
-app.get('/cross.png', function(req, res) {
-  fs.readFile(__dirname + '/cross.png', function (err, data) {
+app.get('/*.png', function(req, res) {
+  fs.readFile(__dirname + req.url, function (err, data) {
         if (err) console.log(err);
         res.set('Content-Type', 'text/png');
         res.send(data);
       });
 });
 
-app.get('/background.jpg', function(req, res) {
-  fs.readFile(__dirname + '/background.jpg', function (err, data) {
+app.get('/*.jpg', function(req, res) {
+  fs.readFile(__dirname + req.url, function (err, data) {
         if (err) console.log(err);
         res.set('Content-Type', 'text/jpg');
         res.send(data);
       });
 });
 
-app.get('/login.js', function(req, res) {
-  fs.readFile(__dirname + '/login.js', function (err, data) {
+app.get('/*.js', function(req, res) {
+  fs.readFile(__dirname + req.url, function (err, data) {
         if (err) console.log(err);
         res.set('Content-Type', 'text/js');
         res.send(data);
