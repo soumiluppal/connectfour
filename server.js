@@ -3,6 +3,7 @@ var http = require('http').Server(app);
 var fs = require('fs');
 var path = require('path');
 
+
 app.get('/*.html', function(req, res) {
   fs.readFile(__dirname + req.url, function (err, data) {
         if (err) console.log(err);

@@ -20,10 +20,10 @@ function closeDivregister() {
 
 function getLoginInfo() {
 	
-	idUser = document.getElementById("userId");
-	passUser = document.getElementById("userPass");
+	idUser = document.getElementById("userId").value;;
+	passUser = document.getElementById("userPass").value;
 
-	window.alert("Your id : " + idUser.value + " Your password : " + passUser.value);
+	window.alert("Your id : " + idUser + " Your password : " + passUser);
 
 }
 
@@ -36,6 +36,10 @@ function getRegisterInfo() {
 	if(myRegEx.test(idUser) == false && idUser.length > 3) {
 		if(!myRegEx.test(passUser) && passUser.length > 7) {
 			if(passUser.localeCompare(cpassUser) == 0) {
+				firebase.auth().createUserWithEmailAndPassword(idUser + "@connect4.com", passUser).catch(function(error) {
+  					var errorCode = error.code;
+  					var errorMessage = error.message;
+				});
 				window.alert("Your id : " + idUser + " Your password : " + passUser);
 			}
 			else {

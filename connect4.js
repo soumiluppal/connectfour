@@ -23,7 +23,7 @@ class Connect4 {
 			}
 			$board.append($row);
 		}
-		console.log($board.html());
+		console.log('here: ' + $board.html());
 	}
 
 	setupEventListeners() {
@@ -71,6 +71,7 @@ class Connect4 {
 
 			that.player = (that.player === 'red') ? 'yellow' : 'red';
 			document.getElementById('which').style.backgroundColor = that.player;
+			console.log('here: ' + $board.html());
 			$(this).trigger('mouseenter')
 		});
 	}
