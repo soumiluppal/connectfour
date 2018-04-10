@@ -70,6 +70,7 @@ class Connect4 {
 			}
 
 			that.player = (that.player === 'red') ? 'yellow' : 'red';
+			document.getElementById('which').style.backgroundColor = that.player;
 			$(this).trigger('mouseenter')
 		});
 	}
