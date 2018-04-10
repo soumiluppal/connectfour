@@ -29,8 +29,16 @@ app.get('/*.html', function(req, res) {
       });
 });
 
+app.get('', function(req, res) {
+  fs.readFile(__dirname + '/login.html', function (err, data) {
+    if (err) console.log(err);
+    res.set('Content-Type', 'text/html');
+    res.send(data);
+    });
+});
+
 app.get('/', function(req, res) {
-  fs.readFile(__dirname + 'login.html', function (err, data) {
+  fs.readFile(__dirname + '/login.html', function (err, data) {
     if (err) console.log(err);
     res.set('Content-Type', 'text/html');
     res.send(data);
