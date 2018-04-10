@@ -19,7 +19,7 @@ function closeDivregister() {
 }
 
 function getLoginInfo() {
-	window.alert("testing");
+	
 	idUser = document.getElementById("userId");
 	passUser = document.getElementById("userPass");
 
@@ -28,7 +28,7 @@ function getLoginInfo() {
 }
 
 function getRegisterInfo() {
-	window.alert("testing");
+	
 	idUser = document.getElementById("userId2").value;
 	passUser = document.getElementById("userPass2").value;
 	cpassUser = document.getElementById("userPass3").value;
@@ -36,7 +36,7 @@ function getRegisterInfo() {
 	if(myRegEx.test(idUser) == false && idUser.length > 3) {
 		if(!myRegEx.test(passUser) && passUser.length > 7) {
 			if(passUser.localeCompare(cpassUser) == 0) {
-				window.alert("Your id : " + idUser.value + " Your password : " + passUser.value);
+				window.alert("Your id : " + idUser + " Your password : " + passUser);
 			}
 			else {
 				window.alert("Password does not match");
