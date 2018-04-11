@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="players_style.css">
+
+	<title>Connect Four</title>
+</head>
+<body>
+<script src="login.js"></script>
+<h1>Connect Four!</h1>
+<div>
+	<button id="readyButton" onclick="disableButton('readyButton')">Ready</button>
+
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  // TODO: Replace with your project's customized code snippet
+  var config = {
+    apiKey: "AIzaSyAnVUNBEl3v7GhJX4L2cRdFOH_QRah4mh4",
+    authDomain: "connectfour-b2d60.firebaseapp.com",
+    databaseURL: "https://connectfour-b2d60.firebaseio.com",
+    storageBucket: "gs://connectfour-b2d60.appspot.com",
+    messagingSenderId: "846000003094",
+  };
+  firebase.initializeApp(config);
+</script>
+<script src="players.js"></script>
+
+</body>
+</html>

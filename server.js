@@ -3,6 +3,7 @@ var http = require('http').Server(app);
 var fs = require('fs');
 var path = require('path');
 
+
 app.get('/game.html*', function(req, res) {
   var login = getParameterByName('ailin', req.url);
   if(login == 'true') {
