@@ -23,12 +23,13 @@ class Connect4 {
 			}
 			$board.append($row);
 		}
-		console.log('here: ' + $board.html());
+		//console.log('here: ' + $board.html());
 	}
 
 	setupEventListeners() {
 		const $board = $(this.selector);
 		const that = this;
+		var socket = io();
 
 		function findLastEmptyCell(col) {
 			const cells = $(`.col[data-col = '${col}']`);
@@ -60,7 +61,7 @@ class Connect4 {
 			$lastEmptyCell.removeClass('empty');
 			$lastEmptyCell.addClass(that.player);
 			$lastEmptyCell.data('player', that.player);
-			that.sendMsg(col);
+			that.sendMsg(col, socket);
 
 			const winner = that.winnerCheck($lastEmptyCell.data('row'), $lastEmptyCell.data('col'));
 			if(winner) {
@@ -72,18 +73,18 @@ class Connect4 {
 
 			that.player = (that.player === 'red') ? 'yellow' : 'red';
 			document.getElementById('which').style.backgroundColor = that.player;
-			console.log('here: ' + $board.html());
+			//console.log('here: ' + $board.html());
 			$(this).trigger('mouseenter')
 		});
-
+		
 		socket.on('chat message', function(msg){
-      		
+      		console.log("here: " + msg);
       		const col = msg;
+      		const $lastEmptyCell = findLastEmptyCell(col);
       		$lastEmptyCell.removeClass(`empty next-${that.player}`);
 			$lastEmptyCell.removeClass('empty');
 			$lastEmptyCell.addClass(that.player);
 			$lastEmptyCell.data('player', that.player);
-			that.sendMsg(col);
 
 			const winner = that.winnerCheck($lastEmptyCell.data('row'), $lastEmptyCell.data('col'));
 			if(winner) {
@@ -95,14 +96,13 @@ class Connect4 {
 
 			that.player = (that.player === 'red') ? 'yellow' : 'red';
 			document.getElementById('which').style.backgroundColor = that.player;
-			console.log('here: ' + $board.html());
+			//console.log('here: ' + $board.html());
 			$(this).trigger('mouseenter')
 		});
     	
 	}
 
-  	sendMsg(col) {
-    	var socket = io();
+  	sendMsg(col, socket) {
       	socket.emit('chat message', col);
       	return false;
   	}
