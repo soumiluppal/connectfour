@@ -2,6 +2,7 @@ var app = require('express')();
 var http = require('http').Server(app);
 var fs = require('fs');
 var path = require('path');
+var io = require('socket.io')(http);
 
 
 app.get('/game.html*', function(req, res) {
@@ -76,6 +77,13 @@ app.get('/*.js', function(req, res) {
         res.set('Content-Type', 'text/js');
         res.send(data);
       });
+});
+
+io.on('connection', function(socket){
+  console.log('a user connected');
+  socket.on('chat message', function(msg){
+    console.log('message: ' + msg);
+  });
 });
 
 http.listen(2233, '0.0.0.0', function() {

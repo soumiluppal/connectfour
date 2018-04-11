@@ -60,6 +60,7 @@ class Connect4 {
 			$lastEmptyCell.removeClass('empty');
 			$lastEmptyCell.addClass(that.player);
 			$lastEmptyCell.data('player', that.player);
+			that.sendMsg(col);
 
 			const winner = that.winnerCheck($lastEmptyCell.data('row'), $lastEmptyCell.data('col'));
 			if(winner) {
@@ -74,7 +75,37 @@ class Connect4 {
 			console.log('here: ' + $board.html());
 			$(this).trigger('mouseenter')
 		});
+
+		socket.on('chat message', function(msg){
+      		
+      		const col = msg;
+      		$lastEmptyCell.removeClass(`empty next-${that.player}`);
+			$lastEmptyCell.removeClass('empty');
+			$lastEmptyCell.addClass(that.player);
+			$lastEmptyCell.data('player', that.player);
+			that.sendMsg(col);
+
+			const winner = that.winnerCheck($lastEmptyCell.data('row'), $lastEmptyCell.data('col'));
+			if(winner) {
+				that.over = true;
+				alert(`Game Over! Player ${that.player} has won!`);
+				$('.col.empty').removeClass('empty');
+				return;
+			}
+
+			that.player = (that.player === 'red') ? 'yellow' : 'red';
+			document.getElementById('which').style.backgroundColor = that.player;
+			console.log('here: ' + $board.html());
+			$(this).trigger('mouseenter')
+		});
+    	
 	}
+
+  	sendMsg(col) {
+    	var socket = io();
+      	socket.emit('chat message', col);
+      	return false;
+  	}
 
 	winnerCheck(row, col) {
 		const that = this;
