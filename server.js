@@ -123,8 +123,8 @@ io.on('connection', function(socket){
     console.log(socket.id);
     connections++;
     if(connections == 2) {
-      socket.emit('usersplaying'+user, "user1=" + user + "&user2=" + tempUser);
-      socket.to(tempId).emit('usersplaying' , "user1=" + tempUser + "&user2=" + user);
+      socket.emit('usersplaying'+user, "user1=" + user + "&user2=" + tempUser + "&color=yellow");
+      socket.to(tempId).emit('usersplaying' , "user1=" + tempUser + "&user2=" + user + "&color=red");
       connections = 0;
     }
     else {

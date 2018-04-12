@@ -27,6 +27,7 @@ class Connect4 {
 	}
 
 	setupEventListeners() {
+		var color = this.getParameterByName('color');
 		const $board = $(this.selector);
 		const that = this;
 		var socket = io();
@@ -44,16 +45,21 @@ class Connect4 {
 
 		$board.on('mouseenter', '.col.empty', function() {
 			if(that.over) return;
+			if(color == that.player) {
 			const col = $(this).data('col');
 			const $lastEmptyCell = findLastEmptyCell(col);
 			$lastEmptyCell.addClass(`next-${that.player}`);
+		}
 		});
 
 		$board.on('mouseleave', '.col', function() {
+			if(color == that.player) {
 			$('.col').removeClass(`next-${that.player}`);
+		}
 		});
 
 		$board.on('click', '.col.empty', function() {
+			if(color == that.player) {
 			const col = $(this).data('col');
 			const row = $(this).data('row');
 			const $lastEmptyCell = findLastEmptyCell(col);
@@ -75,6 +81,7 @@ class Connect4 {
 			
 			//console.log('here: ' + $board.html());
 			$(this).trigger('mouseenter')
+		}
 		});
 		
 		socket.on('token,' + this.getParameterByName('user1', window.location.href), function(msg){
