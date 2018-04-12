@@ -71,7 +71,7 @@ class Connect4 {
 			const winner = that.winnerCheck($lastEmptyCell.data('row'), $lastEmptyCell.data('col'));
 			if(winner) {
 				that.over = true;
-				alert(`Game Over! Player ${that.getParameterByName('user2', window.location.href)} has won!`);
+				alert(`Game Over! Player ${that.getParameterByName('user1', window.location.href)} has won!`);
 				$('.col.empty').removeClass('empty');
 				return;
 			}
@@ -95,7 +95,7 @@ class Connect4 {
 			const winner = that.winnerCheck($lastEmptyCell.data('row'), $lastEmptyCell.data('col'));
 			if(winner) {
 				that.over = true;
-				alert(`Game Over! Player ${that.player} has won!`);
+				alert(`Game Over! Player ${that.getParameterByName('user2', window.location.href)} has won!`);
 				$('.col.empty').removeClass('empty');
 				return;
 			}
