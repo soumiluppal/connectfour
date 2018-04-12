@@ -69,7 +69,6 @@ class Connect4 {
 			$lastEmptyCell.data('player', that.player);
 			that.sendMsg(col, socket);
 			document.getElementById('which').style.backgroundColor = that.player;
-			document.getElementById('turn').innerHTML = this.getParameterByName('user2', window.location.href);
 			const winner = that.winnerCheck($lastEmptyCell.data('row'), $lastEmptyCell.data('col'));
 			if(winner) {
 				that.over = true;
