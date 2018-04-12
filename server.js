@@ -6,9 +6,28 @@ var io = require('socket.io')(http);
 
 
 app.get('/game.html*', function(req, res) {
-  var login = getParameterByName('ailin', req.url);
-  if(login == 'true') {
+  var login = getParameterByName('user', req.url);
+  if(login) {
+    
     fs.readFile(__dirname + '/game.html', function (err, data) {
+        if (err) console.log(err);
+        res.set('Content-Type', 'text/html');
+        res.send(data);
+      });
+  }
+  else {
+    fs.readFile(__dirname + '/login.html', function (err, data) {
+        if (err) console.log(err);
+        res.set('Content-Type', 'text/html');
+        res.send(data);
+      });
+  }
+});
+
+app.get('/players.html*', function(req, res) {
+  var login = getParameterByName('user', req.url);
+  if(login) {
+    fs.readFile(__dirname + '/players.html', function (err, data) {
         if (err) console.log(err);
         res.set('Content-Type', 'text/html');
         res.send(data);
@@ -71,6 +90,14 @@ app.get('/*.jpg', function(req, res) {
       });
 });
 
+app.get('/*.gif', function(req, res) {
+  fs.readFile(__dirname + req.url, function (err, data) {
+        if (err) console.log(err);
+        res.set('Content-Type', 'text/gif');
+        res.send(data);
+      });
+});
+
 app.get('/*.js', function(req, res) {
   fs.readFile(__dirname + req.url, function (err, data) {
         if (err) console.log(err);
@@ -85,6 +112,9 @@ io.on('connection', function(socket){
     socket.broadcast.emit('chat message', msg);
     console.log('message: ' + msg);
   });
+  socket.on('readyplayer', function(user) {
+    console.log(user);
+  })
 });
 
 http.listen(2233, '0.0.0.0', function() {

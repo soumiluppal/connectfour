@@ -23,7 +23,7 @@ function getLoginInfo() {
 	idUser = document.getElementById("userId").value;;
 	passUser = document.getElementById("userPass").value;
 	firebase.auth().signInWithEmailAndPassword(idUser + "@connect4.com", passUser).then(function() {
-		window.open("game.html?" + "ailin=true", '_self', false);
+		window.open("players.html?" + "user=" + idUser, '_self', false);
 	}).catch(function(error) {
   // Handle Errors here.
   		var errorCode = error.code;
@@ -44,7 +44,7 @@ function getRegisterInfo() {
 		if(!myRegEx.test(passUser) && passUser.length > 7) {
 			if(passUser.localeCompare(cpassUser) == 0) {
 				firebase.auth().createUserWithEmailAndPassword(idUser + "@connect4.com", passUser).then(function() {
-					window.open("game.html?" + "ailin=true", '_self', false);
+					window.open("players.html?" + "user=" + idUser, '_self', false);
 				}).catch(function(error) {
   // Handle Errors here.
   				var errorCode = error.code;
