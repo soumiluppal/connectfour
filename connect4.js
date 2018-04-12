@@ -92,7 +92,6 @@ class Connect4 {
 			$lastEmptyCell.removeClass('empty');
 			$lastEmptyCell.addClass(that.player);
 			$lastEmptyCell.data('player', that.player);
-			document.getElementById('which').style.backgroundColor = that.player;
 			const winner = that.winnerCheck($lastEmptyCell.data('row'), $lastEmptyCell.data('col'));
 			if(winner) {
 				that.over = true;
@@ -102,6 +101,7 @@ class Connect4 {
 			}
 
 			that.player = (that.player === 'red') ? 'yellow' : 'red';
+			document.getElementById('which').style.backgroundColor = that.player;
 			
 			//console.log('here: ' + $board.html());
 			$(this).trigger('mouseenter')
