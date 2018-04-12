@@ -62,7 +62,7 @@ class Connect4 {
 			$lastEmptyCell.addClass(that.player);
 			$lastEmptyCell.data('player', that.player);
 			that.sendMsg(col, socket);
-
+			document.getElementById('which').style.backgroundColor = that.player;
 			const winner = that.winnerCheck($lastEmptyCell.data('row'), $lastEmptyCell.data('col'));
 			if(winner) {
 				that.over = true;
@@ -72,12 +72,12 @@ class Connect4 {
 			}
 
 			that.player = (that.player === 'red') ? 'yellow' : 'red';
-			document.getElementById('which').style.backgroundColor = that.player;
+			
 			//console.log('here: ' + $board.html());
 			$(this).trigger('mouseenter')
 		});
 		
-		socket.on('chat message', function(msg){
+		socket.on('token,' + this.getParameterByName('user1', window.location.href), function(msg){
       		console.log("here: " + msg);
       		const col = msg;
       		const $lastEmptyCell = findLastEmptyCell(col);
@@ -85,7 +85,7 @@ class Connect4 {
 			$lastEmptyCell.removeClass('empty');
 			$lastEmptyCell.addClass(that.player);
 			$lastEmptyCell.data('player', that.player);
-
+			document.getElementById('which').style.backgroundColor = that.player;
 			const winner = that.winnerCheck($lastEmptyCell.data('row'), $lastEmptyCell.data('col'));
 			if(winner) {
 				that.over = true;
@@ -95,7 +95,7 @@ class Connect4 {
 			}
 
 			that.player = (that.player === 'red') ? 'yellow' : 'red';
-			document.getElementById('which').style.backgroundColor = that.player;
+			
 			//console.log('here: ' + $board.html());
 			$(this).trigger('mouseenter')
 		});
@@ -103,7 +103,9 @@ class Connect4 {
 	}
 
   	sendMsg(col, socket) {
-      	socket.emit('chat message', col);
+  		var url = window.location.href;
+  		var user2 = this.getParameterByName('user2', url);
+      	socket.emit('token', col + ',' + user2);
       	return false;
   	}
 
@@ -156,5 +158,15 @@ class Connect4 {
 		}
 		return vertical() || horizontal() || diagonalbltotr() || diagonaltltobr();
 	}
+
+	getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
 
 }

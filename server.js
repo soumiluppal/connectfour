@@ -111,10 +111,13 @@ app.get('/*.js', function(req, res) {
 
 io.on('connection', function(socket){
   console.log('a user connected');
-  socket.on('chat message', function(msg){
+  socket.on('token', function(msg){
     console.log(socket.id);
-    socket.broadcast.emit('chat message', msg);
-    console.log('message: ' + msg);
+    var tuser = msg.substr(msg.indexOf(','), msg.length);
+    var token = msg.substr(0, msg.indexOf(','));
+    console.log('message: ' + 'token' + tuser);
+    socket.broadcast.emit('token' + tuser, token);
+    
   });
   socket.on('readyplayer', function(user) {
     console.log(socket.id);
