@@ -1,0 +1,29 @@
+{
+  "name": "connectfour",
+  "version": "1.0.0",
+  "description": "Connect 4 online game",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.16.3",
+    "firebase-admin": "^5.12.0",
+    "socket.io": "^2.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "nothing",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sukim2406/connectfour.git"
+  },
+  "keywords": [
+    "connect4"
+  ],
+  "author": "Champ Team",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/sukim2406/connectfour/issues"
+  },
+  "homepage": "https://github.com/sukim2406/connectfour#readme"
+}
