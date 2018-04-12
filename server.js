@@ -134,7 +134,7 @@ io.on('connection', function(socket){
   })
 });
 
-http.listen(2233, '0.0.0.0', function() {
+http.listen(process.env.PORT, function() {
   console.log('Listening on port: 2233');
 });
 
