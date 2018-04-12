@@ -4,9 +4,12 @@ var fs = require('fs');
 var path = require('path');
 var io = require('socket.io')(http);
 
+var connections = 0;
+var tempId = '';
+var tempUser = '';
 
 app.get('/game.html*', function(req, res) {
-  var login = getParameterByName('user', req.url);
+  var login = getParameterByName('user1', req.url);
   if(login) {
     
     fs.readFile(__dirname + '/game.html', function (err, data) {
@@ -109,11 +112,22 @@ app.get('/*.js', function(req, res) {
 io.on('connection', function(socket){
   console.log('a user connected');
   socket.on('chat message', function(msg){
+    console.log(socket.id);
     socket.broadcast.emit('chat message', msg);
     console.log('message: ' + msg);
   });
   socket.on('readyplayer', function(user) {
-    console.log(user);
+    console.log(socket.id);
+    connections++;
+    if(connections == 2) {
+      socket.emit('usersplaying'+user, "user1=" + user + "&user2=" + tempUser);
+      socket.to(tempId).emit('usersplaying' , "user1=" + tempUser + "&user2=" + user);
+      connections = 0;
+    }
+    else {
+      tempUser = user;
+      tempId = socket.id;
+    }
   })
 });
 

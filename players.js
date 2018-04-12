@@ -6,6 +6,14 @@ function disableButton(id) {
   console.log("Username: " + user);
   var socket = io();
   socket.emit('readyplayer', user);
+  socket.on('usersplaying', function(ext) {
+    console.log(ext);
+    window.open("game.html?" + ext, '_self', false);
+  });
+  socket.on('usersplaying'+user, function(ext) {
+    console.log(ext);
+    window.open("game.html?" + ext, '_self', false);
+  });
 }
 
 function getParameterByName(name, url) {
