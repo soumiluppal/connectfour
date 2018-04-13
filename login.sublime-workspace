@@ -3,18 +3,14 @@
 	{
 		"selected_items":
 		[
+			[
+				"id",
+				"id"
+			]
 		]
 	},
 	"buffers":
 	[
-		{
-			"file": "login.html",
-			"settings":
-			{
-				"buffer_size": 363,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -48,6 +44,10 @@
 	},
 	"file_history":
 	[
+		"/D/connectfour/login_style.css",
+		"/D/connectfour/login.js",
+		"/D/connectfour/login.html",
+		"/C/Users/Soun Kim/AppData/Roaming/Sublime Text 3/Packages/User/JSC.sublime-build",
 		"/D/connectfour/signup.html",
 		"/D/connectfour/login.sublime-workspace"
 	],
@@ -84,37 +84,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "login.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 363,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								114,
-								114
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -149,6 +120,10 @@
 		]
 	},
 	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 136.0
+	},
 	"output.find_results":
 	{
 		"height": 0.0

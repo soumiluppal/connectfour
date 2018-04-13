@@ -131,7 +131,12 @@ io.on('connection', function(socket){
       tempUser = user;
       tempId = socket.id;
     }
-  })
+  });
+  socket.on('send message', function(name, text){
+    var msg = name + ' : ' +  text;
+    console.log(msg);
+    io.emit('receive message', msg);
+  });
 });
 
 http.listen(process.env.PORT, function() {
