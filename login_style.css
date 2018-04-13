@@ -1,12 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 body {
-	background-image: url("background.jpg");
+	background-color: rgb(50,50,50);
+	/*background-image: url("background.jpg");*/
 }
 
 h1 {
-	font-family: Courier;
+	font-family: Open Sans;
+	color: orange;
 	text-align: center;
 	font-size: 70px;
-	color: white;
 }
 
 input {
@@ -51,8 +53,8 @@ button {
 	border-radius: 0px;
 	transition-duration: 0.4s;
 	font-size: 30px;
-	color: rgb(230,230,230);
-	background-color: rgb(50,50,50);
+	color: orange;
+	background-color: white;
 	border-style: solid;
 	border-width: 0px;
 	border-color: rgb(50,50,50);
@@ -69,17 +71,14 @@ button:hover {
 }
 
 button:disabled {
-	background-color: brown;
-	border-style: solid;
-	border-width: 2px;
-	border-color: brown;
+	background-color: cyan;
 	color: white;
-	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 label {
 	font-family: Arial;
 	font-size: 15px;
+	color: rgb(50, 50, 50);
 }
 
 .close {
@@ -104,7 +103,7 @@ label {
 
 .div2 {
     display: none;
-    background-color: rgb(50, 50, 50);
+    background-color: white;
 }
 
 .dropdown {

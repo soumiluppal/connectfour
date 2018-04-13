@@ -1,6 +1,7 @@
 function disableButton(id) {
   document.getElementById(id).disabled = true;
   document.getElementById("img1").style.visibility = "visible";
+  document.getElementById("queue").style.visibility = "visible";
   var url = window.location.href;
   var user = getParameterByName('user', url);
   console.log("Username: " + user);
