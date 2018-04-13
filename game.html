@@ -9,12 +9,38 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js"></script>
 	<script src="connect4.js"></script>
 	<script src="game_logic.js"></script>
-
+	<style>
+		.chat_log{width: 95%; height: 200px;}
+		.name{ width: 10%; }
+		.message{ width: 70%; }
+		.chat{ width: 10%; }
+	</style>
 </head>
 
 <body>
 	<label for="which" style="font-size: 20px; font-family: Arial; color: white">Whose turn is it?</label>
 	<div id="which" class="col" style="display: block; margin-left: 47%; background-color: red"></div>
 	<div id="board"></div>
+	<div>
+		<textarea id = "chatlog" class="chat_log" readonly></textarea>
+	</div>
+	<form id="chat">
+		<input id="name" class="name" type="text" readonly>
+		<input id="message" class="message" type="text">
+		<input type="submit" class="chat" value="chat"/>
+	</form>
+	<div id="box" class="box">
+	<script>
+		var socket = io();
+		$('#chat').on('submit', function(e){
+			socket.emit('send message', $('#name').val(), $('#message').val());
+			$('#message').val("");
+			e.preventDefault();
+		});
+		socket.on('receive message', function(msg){
+			$('#chatLog').append(msg+"\n");
+			$('#chatLog').scrollTop($('#chatLog').innerHeight())
+		});
+	</script>
 </body>
 </html>
