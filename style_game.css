@@ -1,13 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 body {
-	background-image: url("background.jpg");
+	background-color: rgb(50,50,50);
 	text-align: center;
+	/*background-image: url("background.jpg");*/
 }
 
 h1 {
-	font-family: Courier;
+	font-family: Open Sans;
+	color: orange;
 	text-align: center;
-	font-size: 70px;
-	color: white;
+	font-size: 40px;
 }
 
 #board {
