@@ -18,6 +18,46 @@ function closeDivregister() {
 	document.getElementById('id02').style.display='none';
 }
 
+var input = document.getElementById("userPass");
+input.addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        document.getElementById("confirmLogin").click();
+    }
+});
+
+input = document.getElementById("userPass2");
+input.addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        document.getElementById("confirmRegister").click();
+    }
+});
+
+input = document.getElementById("userPass3");
+input.addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        document.getElementById("confirmRegister").click();
+    }
+});
+
+input = document.getElementById("userId");
+input.addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        document.getElementById("confirmLogin").click();
+    }
+});
+
+input = document.getElementById("userId2");
+input.addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        document.getElementById("confirmRegister").click();
+    }
+});
+
 function getLoginInfo() {
 	
 	idUser = document.getElementById("userId").value;;
