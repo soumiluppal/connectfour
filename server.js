@@ -137,6 +137,15 @@ io.on('connection', function(socket){
     console.log(msg);
     io.emit('receive message', msg);
   });
+  socket.on('chatmsg', function(msg){
+    console.log(socket.id);
+    var tuser = msg.substr(msg.indexOf(','), msg.length);
+    var message = msg.substr(0, msg.indexOf(','));
+    console.log('message: ' + 'token' + tuser);
+    socket.broadcast.emit('chatmsg' + tuser, message);
+    
+  });
+
 });
 
 http.listen(process.env.PORT, function() {
