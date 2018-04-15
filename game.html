@@ -21,16 +21,24 @@
 	<h1>Connect Four!</h1>
 	<label for="which" style="font-size: 20px; font-family: Arial; color: white">Whose turn is it?</label>
 	<div id="which" class="col" style="display: block; margin-left: 47%; background-color: red"></div>
-	<div id="board"></div>
-	<div>
-		<textarea id = "chatlog" class="chat_log" readonly></textarea>
+	<div class="Content">
+		<div class= "Wrapper">
+			<div class= "LeftContent">
+				<div id="board"></div>
+			</div>
+			<div class= "RightContent">
+				<div>
+					<textarea id = "chatlog" class="chat_log" readonly></textarea>
+				</div>
+				<form id="chat">
+				<input id="name" class="name" type="text" readonly>
+				<input id="message" class="message" type="text">
+				<input type="submit" class="chat" value="chat"/>
+				</form>
+				<div id="box" class="box">
+			</div>
+		</div>
 	</div>
-	<form id="chat">
-		<input id="name" class="name" type="text" readonly>
-		<input id="message" class="message" type="text">
-		<input type="submit" class="chat" value="chat"/>
-	</form>
-	<div id="box" class="box">
 	<script>
 		var socket = io();
 		$('#chat').on('submit', function(e){
