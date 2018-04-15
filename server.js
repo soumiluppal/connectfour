@@ -110,7 +110,7 @@ app.get('/*.js', function(req, res) {
 });
 
 io.on('connection', function(socket){
-  console.log('a user connected');
+  console.log('a user connected', socket.id);
   socket.on('token', function(msg){
     console.log(socket.id);
     var tuser = msg.substr(msg.indexOf(','), msg.length);
@@ -132,8 +132,8 @@ io.on('connection', function(socket){
       tempId = socket.id;
     }
   });
-  socket.on('send message', function(name, text){
-    var msg = name + ' : ' +  text;
+  socket.on('send message', function(user, text){
+    var msg = user + ' : ' +  text;
     console.log(msg);
     io.emit('receive message', msg);
   });

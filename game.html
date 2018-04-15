@@ -23,7 +23,7 @@
 	<div id="which" class="col" style="display: block; margin-left: 47%; background-color: red"></div>
 	<div class="Content">
 		<div class= "Wrapper">
-			<div class= "LeftContent">
+			<div class= "CenterContent">
 				<div id="board"></div>
 			</div>
 			<div class= "RightContent">
@@ -43,11 +43,11 @@
 		var socket = io();
 		$('#chat').on('submit', function(e){
 			socket.emit('send message', $('#name').val(), $('#message').val());
-			$('#message').val("");
+			$('#message').val('');
 			e.preventDefault();
 		});
 		socket.on('receive message', function(msg){
-			$('#chatLog').append(msg+"\n");
+			$('#chatLog').append(msg+'\n');
 			$('#chatLog').scrollTop($('#chatLog').innerHeight())
 		});
 	</script>
