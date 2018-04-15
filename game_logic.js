@@ -8,9 +8,9 @@ $(document).ready(function() {
 
 var socket = io();
 
-socket.on('chatmsg' + getParameterByName('user2', window.location.href), msg) {
+socket.on('chatmsg' + getParameterByName('user2', window.location.href), function(msg) {
 	document.getElementById("chatlog").value += msg;
-}
+});
 
 function sendChat() {
 	var str = document.getElementById("message").value;
