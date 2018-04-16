@@ -50,7 +50,7 @@
 		});
 		socket.on('receivemessage' + getParameterByName("user1", window.location.href), function(msg){
 			console.log("YUP" + msg);
-			document.getElementById("chatlog").value = msg + "\n";
+			document.getElementById("chatlog").value += msg + "\n";
 			$('#chatLog').scrollTop($('#chatLog').innerHeight())
 		});
 		function getParameterByName(name, url) {
