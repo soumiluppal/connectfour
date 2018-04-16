@@ -140,7 +140,7 @@ io.on('connection', function(socket){
 });
 
 http.listen(process.env.PORT, function() {
-  console.log('Listening on port: 2233');
+  console.log('Listening on port: ' + process.env.PORT);
 });
 
 function getParameterByName(name, url) {

@@ -44,6 +44,7 @@
 		var socket = io();
 		$('#chat').on('submit', function(e){
 			document.getElementById("chatlog").value += $('#name').val() + " : " + $('#message').val() + "\n";
+			document.getElementById("chatlog").scrollTop = document.getElementById("chatlog").scrollHeight;
 			socket.emit('send message', $('#name').val(), $('#message').val(), getParameterByName("user2", window.location.href));
 			$('#message').val('');
 			e.preventDefault();
@@ -51,7 +52,8 @@
 		socket.on('receivemessage' + getParameterByName("user1", window.location.href), function(msg){
 			console.log("YUP" + msg);
 			document.getElementById("chatlog").value += msg + "\n";
-			$('#chatLog').scrollTop($('#chatLog').innerHeight())
+			//document.getElementById("chatlog").scrollTop = document.getElementById("chatlog").scrollHeight;
+			document.getElementById("chatlog").scrollTop = document.getElementById("chatlog").scrollHeight;
 		});
 		function getParameterByName(name, url) {
     if (!url) url = window.location.href;
