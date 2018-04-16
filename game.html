@@ -43,7 +43,7 @@
 
 		var socket = io();
 		$('#chat').on('submit', function(e){
-			document.getElementById("chatlog").value = $('#name').val() + " : " + $('#message').val() + "\n";
+			document.getElementById("chatlog").value += $('#name').val() + " : " + $('#message').val() + "\n";
 			socket.emit('send message', $('#name').val(), $('#message').val(), getParameterByName("user2", window.location.href));
 			$('#message').val('');
 			e.preventDefault();
