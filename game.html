@@ -33,23 +33,35 @@
 				<form id="chat">
 				<input id="name" class="name" type="text" readonly style="cursor: default">
 				<input id="message" class="message" type="text" autocomplete="off">
-				<input type="submit" class="chat" value="Send" onclick="sendChat()" />
+				<input type="submit" class="chat" value="Send" />
 				</form>
 				<div id="box" class="box">
 			</div>
 		</div>
 	</div>
 	<script>
+
 		var socket = io();
 		$('#chat').on('submit', function(e){
-			socket.emit('send message', $('#name').val(), $('#message').val());
+			document.getElementById("chatlog").value = $('#name').val() + " : " + $('#message').val() + "\n";
+			socket.emit('send message', $('#name').val(), $('#message').val(), getParameterByName("user2", window.location.href));
 			$('#message').val('');
 			e.preventDefault();
 		});
-		socket.on('receive message', function(msg){
-			$('#chatLog').append(msg+'\n');
+		socket.on('receivemessage' + getParameterByName("user1", window.location.href), function(msg){
+			console.log("YUP" + msg);
+			document.getElementById("chatlog").value = msg + "\n";
 			$('#chatLog').scrollTop($('#chatLog').innerHeight())
 		});
+		function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
 	</script>
 </body>
 </html>
