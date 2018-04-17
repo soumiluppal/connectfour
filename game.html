@@ -28,12 +28,14 @@
 			</div>
 			<div class= "RightContent">
 				<div>
-					<textarea id = "chatlog" class="chat_log" readonly style="cursor: default"></textarea>
+					<div id = "chatlog" class="chat_log" style="height: 450px; width: 300px">
+						
+					</div>
 				</div>
 				<form id="chat">
-				<input id="name" class="name" type="text" readonly style="cursor: default">
-				<input id="message" class="message" type="text" autocomplete="off">
-				<input type="submit" class="chat" value="Send" />
+				<input id="name" class="name" type="text" readonly style="cursor: default; color: green">
+				<input id="message" class="message" type="text" autocomplete="off" >
+				<button class="chat">Send</button>
 				</form>
 				<div id="box" class="box">
 			</div>
@@ -43,14 +45,18 @@
 
 		var socket = io();
 		$('#chat').on('submit', function(e){
-			document.getElementById("chatlog").value += $('#name').val() + " : " + $('#message').val() + "\n";
+			$("#chatlog").append(`<p class="username" style="color: green"><b>${getParameterByName('user1', window.location.href)}: </b></p>`);
+			$(".username").last().after(`<p class="msgbody">${document.getElementById("message").value}</p><br/>`);
+			//$("#chatlog").append("<p class="msgbody">Hey</p>");
 			document.getElementById("chatlog").scrollTop = document.getElementById("chatlog").scrollHeight;
 			socket.emit('send message', $('#name').val(), $('#message').val(), getParameterByName("user2", window.location.href));
 			$('#message').val('');
 			e.preventDefault();
 		});
 		socket.on('receivemessage' + getParameterByName("user1", window.location.href), function(msg){
-			console.log("YUP" + msg);
+			var message = msg.substr(msg.indexOf(' ') + 1, msg.length);
+			$("#chatlog").append(`<p class="username" style="color: red;"><b>${getParameterByName('user2', window.location.href)}: </b></p>`);
+			$(".username").last().after(`<p class="msgbody">${message}</p><br/>`);
 			document.getElementById("chatlog").value += msg + "\n";
 			//document.getElementById("chatlog").scrollTop = document.getElementById("chatlog").scrollHeight;
 			document.getElementById("chatlog").scrollTop = document.getElementById("chatlog").scrollHeight;

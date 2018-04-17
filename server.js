@@ -133,7 +133,7 @@ io.on('connection', function(socket){
     }
   });
   socket.on('send message', function(user, text, user2){
-    var msg = user + ' : ' +  text;
+    var msg = user + ': ' +  text;
     console.log(msg);
     io.emit('receivemessage' + user2, msg);
   });
