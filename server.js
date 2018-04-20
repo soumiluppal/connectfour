@@ -137,6 +137,9 @@ io.on('connection', function(socket){
     console.log(msg);
     io.emit('receivemessage' + user2, msg);
   });
+  socket.on('disconnecting', function(user2, user1) {
+    socket.broadcast.emit('disconnected' + user2, user1);
+  });
 });
 
 http.listen(process.env.PORT, function() {

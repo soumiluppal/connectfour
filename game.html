@@ -17,7 +17,7 @@
 	</style>
 </head>
 
-<body>
+<body onunload="unloadFunction()">
 	<h1>Connect Four!</h1>
 	<label for="which" style="font-size: 20px; font-family: Arial; color: white">Whose turn is it?</label>
 	<div id="which" class="col" style="display: block; margin-left: 47%; background-color: red"></div>
@@ -42,8 +42,10 @@
 		</div>
 	</div>
 	<script>
-
 		var socket = io();
+		function unloadFunction() {
+			socket.emit('disconnecting', getParameterByName("user2", window.location.href), getParameterByName("user1", window.location.href))
+		}
 		$('#chat').on('submit', function(e){
 			$("#chatlog").append(`<p class="username" style="color: green"><b>${getParameterByName('user1', window.location.href)}: </b></p>`);
 			$(".username").last().after(`<p class="msgbody">${document.getElementById("message").value}</p><br/>`);

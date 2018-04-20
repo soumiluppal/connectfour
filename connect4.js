@@ -106,6 +106,16 @@ class Connect4 {
 			//console.log('here: ' + $board.html());
 			$(this).trigger('mouseenter')
 		});
+
+		socket.on('disconnected' + getParameterByName("user1", window.location.href), function(disconnected_user) {
+			//const winner = that.winnerCheck($lastEmptyCell.data('row'), $lastEmptyCell.data('col'));
+			if(!that.over) {
+				that.over = true;
+				alert(`Player ${disconnected_user} has disconnected! Player ${that.getParameterByName('user1', window.location.href)} has won!`);
+				$('.col.empty').removeClass('empty');
+				return;
+			}
+		})
     	
 	}
 
