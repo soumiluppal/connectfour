@@ -142,7 +142,7 @@ io.on('connection', function(socket){
   });
 });
 
-http.listen(process.env.PORT, function() {
+http.listen(2233, function() {
   console.log('Listening on port: ' + process.env.PORT);
 });
 
