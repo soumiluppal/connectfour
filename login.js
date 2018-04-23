@@ -1,6 +1,7 @@
 var idUser;
 var passUser;
 var cpassUser;
+var encrypted;
 
 function clickLogin() {
 	document.getElementById('id01').style.display='block';
@@ -63,7 +64,9 @@ function getLoginInfo() {
 	idUser = document.getElementById("userId").value;;
 	passUser = document.getElementById("userPass").value;
 	firebase.auth().signInWithEmailAndPassword(idUser + "@connect4.com", passUser).then(function() {
-		window.open("players.html?" + "user=" + idUser, '_self', false);
+		encrypted = CryptoJS.AES.encrpt(userPass, idUser);
+		window.open("players.html?+" + "user=" + encrypted, '_self', false);
+		//window.open("players.html?" + "user=" + idUser, '_self', false);
 	}).catch(function(error) {
   // Handle Errors here.
   		var errorCode = error.code;
