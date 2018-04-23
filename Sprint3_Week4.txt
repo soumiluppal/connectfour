@@ -1,0 +1,12 @@
+=== Weekly Individual Report (Team 24: Evant) ===
+Name: Soumil Uppal
+
+Sprint 3 Week 4 (Summary)
+04/17 5 hr fb3d5609d728a84f0d9441232fada2b23c8f56dd Added connect to facebook (User Story 13)
+04/17 2 hr 810b8c169be3ee6ddec59ca563d146be49d71176 Added facebook profile access from profile page (User Story 13)
+04/17 2 hr 43358e0394ecbcb6b4dc3cfcbbd205302dea0ef5 Fixed bug with event page from mapview (Fixed crashes from event page)
+04/18 2 hr 75e2456be292f2a2bb6f7be5cf5918afe7c244c1 Big fixed with app launch
+04/18 1 hr f7cc37b6604c1d59834fc337a82c2fcea463b089 Fixed issues with launch app
+04/18 1 hr cf950c7f3bb69f75c5d2522354287dd67828e4b7 Reduced load up time and added progress bar
+04/18 0.5 hr ffb15cce00cac7fe007561244a6d3ab3b4998d57 Added images for all categories
+04/18 0.5 hr 519e14184970ce64d049216189ea3698ce1d69ac Fixed notification settings bug
