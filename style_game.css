@@ -12,6 +12,13 @@ h1 {
 	font-size: 40px;
 }
 
+h2 {
+	font-family: Open Sans;
+	color: orange;
+	text-align: center;
+	font-size: 20px;
+}
+
 #div{
 	display:block;
 }
