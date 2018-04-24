@@ -21,26 +21,21 @@
 	<h1>Connect Four!</h1>
 	<label for="which" style="font-size: 20px; font-family: Arial; color: white">Whose turn is it?</label>
 	<div id="which" class="col" style="display: block; margin-left: 47%; background-color: red"></div>
-	<div class="Content">
-		<div class= "Wrapper">
+
 			<div class= "CenterContent">
 				<div id="board"></div>
 			</div>
 			<div class= "RightContent">
-				<div>
-					<div id = "chatlog" class="chat_log" style="height: 450px; width: 300px">
-						
-					</div>
+				<div id = "chatlog" class="chat_log" style="height: 450px; width: 300px">		
 				</div>
 				<form id="chat">
-				<input id="name" class="name" type="text" readonly style="cursor: default; color: green">
-				<input id="message" class="message" type="text" autocomplete="off" >
-				<button class="chat">Send</button>
+					<input id="name" class="name" type="text" readonly style="cursor: default; color: green">
+					<input id="message" class="message" type="text" autocomplete="off" >
+					<button class="chat">Send</button>
 				</form>
 				<div id="box" class="box">
 			</div>
-		</div>
-	</div>
+
 	<script>
 		var socket = io();
 		function unloadFunction() {

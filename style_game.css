@@ -12,6 +12,10 @@ h1 {
 	font-size: 40px;
 }
 
+#div{
+	display:block;
+}
+
 #board {
 	background-color: blue;
 	display: inline-block;
@@ -66,13 +70,14 @@ h1 {
 }
 
 .CenterContent{
-	float: left;
-	padding-left: 10%;
+	float:left;
+	margin-left: 10%;
+	margin-right: 10%;
 }
 
 .RightContent{
-	float: right;
-	padding-right: 15%;
+	float: left;
+	margin-right: 10%;
 }
 
 
