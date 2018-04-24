@@ -5,7 +5,8 @@ function disableButton(id) {
   var url = window.location.href;
   var user = getParameterByName('user', url);
   var sec = getParameterByName('sec', url)
-  var password = hex_to_ascii(CryptoJS.AES.decrypt(sec, user));
+  var password = atob(sec);
+  //var password = hex_to_ascii(CryptoJS.AES.decrypt(sec, user));
     console.log("Username: " + user + "\nPassword: " + password);
   firebase.auth().signInWithEmailAndPassword(user + "@connect4.com", password).then(function() {
     var socket = io();
