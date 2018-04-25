@@ -101,6 +101,14 @@ app.get('/*.gif', function(req, res) {
       });
 });
 
+app.get('/*.ico', function(req, res) {
+  fs.readFile(__dirname + req.url, function (err, data) {
+        if (err) console.log(err);
+        res.set('Content-Type', 'text/ico');
+        res.send(data);
+      });
+});
+
 app.get('/*.js', function(req, res) {
   fs.readFile(__dirname + req.url, function (err, data) {
         if (err) console.log(err);
