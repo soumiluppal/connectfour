@@ -128,6 +128,10 @@ io.on('connection', function(socket){
     
   });
   socket.on('readyplayer', function(user) {
+  	if(user === tempUser) {
+  		
+  	}
+  	else {
     console.log(socket.id);
     connections++;
     if(connections == 2) {
@@ -139,6 +143,7 @@ io.on('connection', function(socket){
       tempUser = user;
       tempId = socket.id;
     }
+	}
   });
   socket.on('send message', function(user, text, user2){
     var msg = user + ': ' +  text;
