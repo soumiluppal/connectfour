@@ -129,7 +129,8 @@ io.on('connection', function(socket){
   });
   socket.on('readyplayer', function(user) {
   	if(user === tempUser) {
-  		
+  		tempId = socket.id;
+  		tempUser = user;
   	}
   	else {
     console.log(socket.id);
